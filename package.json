@@ -1,0 +1,75 @@
+{
+  "name": "kiro-chat-rtl-auto-direction",
+  "displayName": "Kiro Chat RTL Auto-Direction",
+  "description": "Automatic bidirectional (RTL/LTR) text direction detection for Kiro IDE chat panel. Hebrew messages display RTL, English messages display LTR, code blocks stay LTR.",
+  "version": "0.1.0",
+  "publisher": "kiro-rtl",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "rtl",
+    "hebrew",
+    "bidirectional",
+    "kiro",
+    "chat",
+    "direction"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "kiroRtl.activate",
+        "title": "Kiro RTL: Activate",
+        "category": "Kiro RTL"
+      },
+      {
+        "command": "kiroRtl.deactivate",
+        "title": "Kiro RTL: Deactivate",
+        "category": "Kiro RTL"
+      },
+      {
+        "command": "kiroRtl.openLogs",
+        "title": "Kiro RTL: Open Logs",
+        "category": "Kiro RTL"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Kiro RTL Auto-Direction",
+      "properties": {
+        "kiroRtl.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable the Kiro RTL Auto-Direction extension. When disabled, the injected CSS is removed on next reload."
+        },
+        "kiroRtl.logging.level": {
+          "type": "string",
+          "enum": [
+            "info",
+            "warn",
+            "error"
+          ],
+          "default": "warn",
+          "description": "Minimum log level that will be written to the Kiro RTL Auto-Direction output channel."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch",
+    "package": "npm run build && npx @vscode/vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.5"
+  }
+}

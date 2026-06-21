@@ -1,0 +1,11 @@
+node_modules/
+out/
+*.vsix
+.vscode-test/
+.kiro/
+.DS_Store
+*.log
+.idea/
+*.swp
+*.swo
+Thumbs.db
